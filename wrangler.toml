@@ -1,0 +1,6 @@
+name = "tv"
+type = "javascript"
+
+[site]
+bucket = "./"
+entry-point = "workers-site"
