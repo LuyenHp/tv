@@ -39,7 +39,7 @@
 <body>
     <div id="iframe-container">
         <iframe id="dashboard-iframe" src="https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/Xtn4D" allowfullscreen></iframe>
-        <div id="fullscreen-button">Open Fullscreen</div>
+        {% comment %} <div id="fullscreen-button">Open Fullscreen</div> {% endcomment %}
     </div>
     <script>
         const pages = [
@@ -56,23 +56,25 @@
             const nextPage = pages[currentPageIndex];
             iframe.src = `https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/${nextPage}?print_mode=true`;
         }
+
+        function goFullscreen() {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen().catch(err => console.log('Error attempting to enable full-screen mode:', err));
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen().catch(err => console.log('Error attempting to enable full-screen mode:', err));
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari và Opera
+                iframe.webkitRequestFullscreen().catch(err => console.log('Error attempting to enable full-screen mode:', err));
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen().catch(err => console.log('Error attempting to enable full-screen mode:', err));
+            }
+        }
         
         document.addEventListener('DOMContentLoaded', function() {
             setInterval(loadNextPage, 30000); // 30000 milliseconds = 30 seconds
             
             // Mở iframe trong chế độ toàn màn hình khi người dùng nhấp vào nút
             const fullscreenButton = document.getElementById('fullscreen-button');
-            fullscreenButton.addEventListener('click', function() {
-                if (iframe.requestFullscreen) {
-                    iframe.requestFullscreen();
-                } else if (iframe.mozRequestFullScreen) { // Firefox
-                    iframe.mozRequestFullScreen();
-                } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari và Opera
-                    iframe.webkitRequestFullscreen();
-                } else if (iframe.msRequestFullscreen) { // IE/Edge
-                    iframe.msRequestFullscreen();
-                }
-            });
+            fullscreenButton.addEventListener('click', goFullscreen);
         });
         
     </script>
