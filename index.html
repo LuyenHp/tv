@@ -30,15 +30,19 @@
 </head>
 <body>
     <div id="iframe-container">
-        <iframe id="dashboard-iframe" src="https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/Xtn4D" allowfullscreen></iframe>
+        <!-- <iframe id="dashboard-iframe" src="https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/Xtn4D" allowfullscreen></iframe> -->
+        <iframe id="dashboard-iframe" src="https://app.powerbi.com/view?r=eyJrIjoiZjgwYmMwNjYtYzMzMi00MTRjLTk2NDQtODQyNzEzZjU1NGVmIiwidCI6IjdmODMxNTBiLTdjOTktNGMzNi04YTg4LWQ1ZDIwYmUyOGYyYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection84d4fce9469dc0c14d20" allowfullscreen></iframe>
     </div>
     <script>
         const pages = [
-            'p_wgz08xmkkd',
-            'Xtn4D', // ID của trang đầu tiên
-            'p_0797dfjkkd', // Trang 1
-            'p_ypu7hlnrid', // ID của trang thứ hai
-            'p_m5w7poisid'  // ID của trang thứ ba
+            '84d4fce9469dc0c14d20',
+            '1424152049cb59800156', // ID của trang đầu tiên
+            '7187218c1260ba60a8cd', // Trang 1
+            '58cfddd7a452a93c28e7', // ID của trang thứ hai
+            'd02f50b22b8cd44b3e66',
+            '71fc6e705db09102a20' ,
+            '61df7e44878487cdb46d',
+            '405be760a9e744867374' // ID của trang thứ ba
             // Thêm các ID của các trang khác nếu cần
         ];
         let currentPageIndex = 0;
@@ -47,7 +51,8 @@
         function loadNextPage() {
             currentPageIndex = (currentPageIndex + 1) % pages.length;
             const nextPage = pages[currentPageIndex];
-            iframe.src = `https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/${nextPage}?print_mode=true`;
+            //iframe.src = `https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/${nextPage}?print_mode=true`;
+            iframe.src = `https://app.powerbi.com/view?r=eyJrIjoiZjgwYmMwNjYtYzMzMi00MTRjLTk2NDQtODQyNzEzZjU1NGVmIiwidCI6IjdmODMxNTBiLTdjOTktNGMzNi04YTg4LWQ1ZDIwYmUyOGYyYSIsImMiOjEwfQ%3D%3D&pageName=ReportSection${nextPage}&print_mode=true`;
         }
 
         function goFullscreen() {
