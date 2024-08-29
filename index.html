@@ -25,21 +25,12 @@
             height: 100%;
             border: none;
         }
-        #fullscreen-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 999;
-            background-color: #ffffff;
-            padding: 10px;
-            cursor: pointer;
-        }
+        
     </style>
 </head>
 <body>
     <div id="iframe-container">
         <iframe id="dashboard-iframe" src="https://lookerstudio.google.com/embed/reporting/e988b8d0-7eda-47e4-80ed-6afe5cf41470/page/Xtn4D" allowfullscreen></iframe>
-        {% comment %} <div id="fullscreen-button">Open Fullscreen</div> {% endcomment %}
     </div>
     <script>
         const pages = [
@@ -71,10 +62,6 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             setInterval(loadNextPage, 30000); // 30000 milliseconds = 30 seconds
-            
-            // Mở iframe trong chế độ toàn màn hình khi người dùng nhấp vào nút
-            const fullscreenButton = document.getElementById('fullscreen-button');
-            fullscreenButton.addEventListener('click', goFullscreen);
         });
         
     </script>
